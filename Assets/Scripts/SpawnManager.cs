@@ -1,26 +1,44 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FullSerializer;
 
 public class SpawnManager : MonoBehaviour
 {
-    public Level level;
-    public int levelID;
+    public static SpawnManager Instance { get; private set; }
 
-    public GameObject roadPrefab;
+    [SerializeField]
+    private Level level;
 
-    public Transform prevRoad;
+    [SerializeField]
+    private int levelID;
 
-    public List<GameObject> collectiblePrefabs;
+    [SerializeField]
+    private GameObject levelPrefab;
 
-    public Dictionary<CollectibleType, GameObject> dict = new Dictionary<CollectibleType, GameObject>();
+    [SerializeField]
+    private float levelLength = 95f;
+
+    private Transform prevLevel;
+
+    [SerializeField]
+    private List<GameObject> collectiblePrefabs;
+
+    private Dictionary<CollectibleType, GameObject> dict = new Dictionary<CollectibleType, GameObject>();
+
+    public static Action OnLevelSpawned;
+    public static Action<int> OnChapterSpawned;
+
+    private void Awake()
+    {
+        if (Instance != null) Destroy(gameObject);
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        var serializer = new fsSerializer();
-        level = FileUtils.LoadJsonFile<Level>(serializer, "Levels/" + levelID);
-
         dict.Add(CollectibleType.S_SPHERE, collectiblePrefabs[0]);
         dict.Add(CollectibleType.M_SPHERE, collectiblePrefabs[1]);
         dict.Add(CollectibleType.L_SPHERE, collectiblePrefabs[2]);
@@ -31,37 +49,38 @@ public class SpawnManager : MonoBehaviour
         dict.Add(CollectibleType.M_CAPSULE, collectiblePrefabs[7]);
         dict.Add(CollectibleType.L_CAPSULE, collectiblePrefabs[8]);
 
-        CreateLevel();
-
+        CreateLevel(levelID);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Level GetLevel() => level;
 
-    private void CreateLevel()
+    private void CreateLevel(int levelID)
     {
-        GameObject road;
+        GameObject levelObj;
+
+        var serializer = new fsSerializer();
+        level = FileUtils.LoadJsonFile<Level>(serializer, "Levels/" + levelID);
+
+        if (prevLevel == null)
+        {
+            levelObj = Instantiate(levelPrefab);
+        }
+        else
+        {
+            levelObj = Instantiate(levelPrefab, prevLevel.position + new Vector3(0.0f, 0.0f, levelLength), levelPrefab.transform.rotation);
+        }
+
+        prevLevel = levelObj.transform;
+
+        var levelParts = levelObj.GetComponent<LevelParts>();
+
+        var roads = levelParts.chapters;
+
 
         for (int h = 0; h < 3; h++)
         {
-            if(prevRoad == null)
-            {
-                road = Instantiate(roadPrefab);
-            }
-            else
-            {
-                road = Instantiate(roadPrefab, prevRoad.position + new Vector3(0.0f, 0.0f, 20f), roadPrefab.transform.rotation);
-            }
-
-            prevRoad = road.transform;
-            road.GetComponentInChildren<Renderer>().material.color = level.roadColor;
-
             Vector3 spawnStartPoint = new Vector3(-4.5f, 1.0f, 9.5f);
             Vector3 currentSpawnPoint = spawnStartPoint;
-
             for (var j = 0; j < level.length; j++)
             {
                 for (var i = 0; i < level.width; i++)
@@ -76,7 +95,7 @@ public class SpawnManager : MonoBehaviour
                         if(item != null)
                         {
                             var obj = Instantiate(item);
-                            obj.transform.parent = road.transform;
+                            obj.transform.parent = roads[h].transform;
                             obj.transform.localPosition = currentSpawnPoint;
                         }
                     }
@@ -89,7 +108,7 @@ public class SpawnManager : MonoBehaviour
                         if (item != null)
                         {
                             var obj = Instantiate(item);
-                            obj.transform.parent = road.transform;
+                            obj.transform.parent = roads[h].transform;
                             obj.transform.localPosition = currentSpawnPoint;
                         }
                     }
@@ -102,7 +121,7 @@ public class SpawnManager : MonoBehaviour
                         if (item != null)
                         {
                             var obj = Instantiate(item);
-                            obj.transform.parent = road.transform;
+                            obj.transform.parent = roads[h].transform;
                             obj.transform.localPosition = currentSpawnPoint;
                         }
                     }
@@ -112,7 +131,10 @@ public class SpawnManager : MonoBehaviour
                 currentSpawnPoint.x = -4.5f;
                 currentSpawnPoint.z -= 1.0f;
             }
+            OnChapterSpawned?.Invoke(h);
         }
+
+        OnLevelSpawned?.Invoke();
     }
 
     private GameObject GetTileEntity(LevelTile tile)
