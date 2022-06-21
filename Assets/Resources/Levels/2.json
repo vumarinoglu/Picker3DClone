@@ -1,8 +1,8 @@
 {
     "id": 2,
     "firstGoal": 15,
-    "secondGoal": 24,
-    "finalGoal": 15,
+    "secondGoal": 18,
+    "finalGoal": 12,
     "roadColor": {
         "r": 0.9056604,
         "g": 0.5193006,
@@ -445,8 +445,14 @@
         null,
         null,
         null,
-        null,
-        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
         null,
         null,
         null,

@@ -1,12 +1,12 @@
 {
-    "id": 1,
-    "firstGoal": 12,
+    "id": 10,
+    "firstGoal": 26,
     "secondGoal": 20,
-    "finalGoal": 15,
+    "finalGoal": 24,
     "roadColor": {
-        "r": 0.9058824,
-        "g": 0.3215686,
-        "b": 0.4649929,
+        "r": 0.1569064,
+        "g": 0.7735849,
+        "b": 0.2226533,
         "a": 1.0
     },
     "width": 10,
@@ -34,62 +34,21 @@
         null,
         null,
         null,
-        null,
-        null,
         {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -108,115 +67,20 @@
         null,
         null,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -226,19 +90,13 @@
         null,
         null,
         {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
+        null,
+        null,
         {
-            "type": "M_SPHERE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "M_SPHERE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -248,19 +106,89 @@
         null,
         null,
         {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         {
-            "type": "S_CUBE",
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -279,10 +207,127 @@
         null,
         null,
         null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
         null,
         null,
         null,
         null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
         null,
         null,
         null,
@@ -312,51 +357,6 @@
         null,
         null,
         null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
         null,
         null,
         null,
@@ -371,19 +371,7 @@
         null,
         null,
         {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
+            "type": "L_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -405,30 +393,13 @@
         null,
         null,
         null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
         null,
         null,
         null,
         null,
         null,
         {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
+            "type": "L_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -450,33 +421,6 @@
         null,
         null,
         null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
         null,
         null,
         null,
@@ -493,57 +437,7 @@
         null,
         null,
         {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
+            "type": "L_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -562,31 +456,16 @@
         null,
         null,
         null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
         null,
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
+        null,
+        null,
         null,
         null,
         null,
         null,
         null,
         {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        {
-            "type": "S_CUBE",
+            "type": "L_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -596,26 +475,93 @@
         null,
         null,
         null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         {
-            "type": "S_CUBE",
+            "type": "L_SPHERE",
             "$type": "CollectibleTile"
         },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         {
-            "type": "S_CUBE",
+            "type": "L_SPHERE",
             "$type": "CollectibleTile"
         },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
+            "type": "WINGS",
+            "$type": "BoosterTile"
         },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CUBE",
-            "$type": "CollectibleTile"
-        },
+        null,
+        null,
+        null,
         null,
         null
     ],
@@ -632,14 +578,7 @@
         null,
         null,
         null,
-        {
-            "type": "S_CAPSULE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CAPSULE",
-            "$type": "CollectibleTile"
-        },
+        null,
         null,
         null,
         null,
@@ -649,28 +588,29 @@
         null,
         null,
         {
-            "type": "S_CAPSULE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CAPSULE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
         null,
         null,
         {
-            "type": "S_CAPSULE",
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -679,10 +619,94 @@
         null,
         null,
         null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
         null,
         null,
         {
-            "type": "S_CAPSULE",
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_CUBE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        null,
+        null,
+        {
+            "type": "S_CUBE",
             "$type": "CollectibleTile"
         },
         null,
@@ -693,8 +717,19 @@
         null,
         null,
         null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         {
-            "type": "S_CAPSULE",
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -704,10 +739,20 @@
         null,
         null,
         null,
-        null,
-        null,
         {
-            "type": "M_CUBE",
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -715,26 +760,28 @@
         null,
         null,
         null,
-        null,
-        null,
-        null,
-        null,
         {
-            "type": "S_CAPSULE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         {
-            "type": "S_CAPSULE",
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -753,18 +800,10 @@
         },
         null,
         null,
-        {
-            "type": "S_CAPSULE",
-            "$type": "CollectibleTile"
-        },
         null,
         null,
         null,
         null,
-        {
-            "type": "S_CAPSULE",
-            "$type": "CollectibleTile"
-        },
         null,
         null,
         {
@@ -781,48 +820,14 @@
         null,
         null,
         null,
+        null,
+        null,
         {
-            "type": "S_CAPSULE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         {
-            "type": "S_CAPSULE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "M_CUBE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CAPSULE",
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
@@ -834,11 +839,22 @@
         null,
         null,
         {
-            "type": "S_CAPSULE",
+            "type": "S_SPHERE",
+            "$type": "CollectibleTile"
+        },
+        {
+            "type": "S_SPHERE",
             "$type": "CollectibleTile"
         },
         null,
         null,
+        null,
+        null,
+        null,
+        {
+            "type": "S_CUBE",
+            "$type": "CollectibleTile"
+        },
         null,
         null,
         null,
@@ -846,7 +862,7 @@
         null,
         null,
         {
-            "type": "S_CAPSULE",
+            "type": "S_CUBE",
             "$type": "CollectibleTile"
         },
         null,
@@ -858,34 +874,6 @@
         null,
         null,
         null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CAPSULE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CAPSULE",
-            "$type": "CollectibleTile"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-            "type": "S_CAPSULE",
-            "$type": "CollectibleTile"
-        },
-        {
-            "type": "S_CAPSULE",
-            "$type": "CollectibleTile"
-        },
         null,
         null,
         null,
