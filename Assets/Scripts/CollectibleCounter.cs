@@ -7,6 +7,9 @@ using TMPro;
 public class CollectibleCounter : MonoBehaviour
 {
     [SerializeField]
+    private LevelManager levelManager;
+
+    [SerializeField]
     private int chapter;
 
     [SerializeField]
@@ -18,10 +21,10 @@ public class CollectibleCounter : MonoBehaviour
     [SerializeField]
     private int goal;
 
-    private bool countdown = false;
-
     [SerializeField]
-    private float countdownTime = 3f;
+    private float countdownTime = 1.5f;
+
+    private bool countdown = false;
     private float currentTime;
 
     private void OnEnable()
@@ -32,7 +35,6 @@ public class CollectibleCounter : MonoBehaviour
     private void OnDisable()
     {
         SpawnManager.OnLevelSpawned -= GetChapterScore;
-
     }
 
     private void Start()
@@ -48,9 +50,27 @@ public class CollectibleCounter : MonoBehaviour
         currentTime -= Time.deltaTime;
         if(currentTime <= 0)
         {
-            GameManager.OnChapterLost?.Invoke();
-            countdown = false;
+            if(score < goal)
+            {
+                GameManager.OnChapterLost?.Invoke();
+                countdown = false;
+            }
+            else
+            {
+                GameManager.OnChapterWon?.Invoke(chapter);
+                countdown = false;
+                if(chapter == 2)
+                {
+                    StartCoroutine(EndLevelAsync());
+                }
+            }
         }
+    }
+
+    IEnumerator EndLevelAsync()
+    {
+        yield return new WaitForSeconds(.25f);
+        GameManager.OnEndLevel?.Invoke();
     }
 
     private void OnCollisionStay(Collision collision)
@@ -58,7 +78,6 @@ public class CollectibleCounter : MonoBehaviour
         if (collision.transform.CompareTag("Collectible"))
         {
             countdown = true;
-            Destroy(collision.gameObject);
             AddScore();
         }
     }
@@ -68,12 +87,6 @@ public class CollectibleCounter : MonoBehaviour
         score++;
         scoreText.text = score + "/" + goal;
         currentTime = countdownTime;
-
-        if(score >= goal)
-        {
-            countdown = false;
-            GameManager.OnChapterWon?.Invoke();
-        }
     }
 
     public void GetChapterScore()
@@ -81,15 +94,15 @@ public class CollectibleCounter : MonoBehaviour
         switch (chapter)
         {
             case 0:
-                goal = SpawnManager.Instance.GetLevel().firstGoal;
+                goal = levelManager.level.firstGoal;
                 scoreText.text = "0/" + goal;
                 break;
             case 1:
-                goal = SpawnManager.Instance.GetLevel().secondGoal;
+                goal = levelManager.level.secondGoal;
                 scoreText.text = "0/" + goal;
                 break;
             case 2:
-                goal = SpawnManager.Instance.GetLevel().finalGoal;
+                goal = levelManager.level.finalGoal;
                 scoreText.text = "0/" + goal;
                 break;
         }
