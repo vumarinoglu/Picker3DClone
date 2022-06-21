@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4294809063306232454}
   - component: {fileID: 3676342903715871504}
   - component: {fileID: -5144535843102093643}
-  - component: {fileID: 665474440604604663}
+  - component: {fileID: -2934941876123088578}
   m_Layer: 0
   m_Name: L_SPHERE
   m_TagString: Collectible
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6557931936107602894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.55, y: 1, z: -0.42500007}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -107,11 +107,11 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!114 &665474440604604663
+  m_CollisionDetection: 3
+--- !u!114 &-2934941876123088578
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,6 +120,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6557931936107602894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6a1e4ff744f29c41829cc42c8a3b957, type: 3}
+  m_Script: {fileID: 11500000, guid: e31650219e2259346bd0a7724b9b8fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sCollectiblePrefab: {fileID: 8093918763723997501, guid: 798c1f2670dbef94e91bcdc057d01ab8,
+    type: 3}
