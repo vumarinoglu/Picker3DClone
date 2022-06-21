@@ -635,11 +635,6 @@ public class LevelEditorTab : EditorTab
             var boosterTile = (BoosterTile)tiles[tileIndex];
             tileTypeName = boosterTile.type.ToString();
         }
-        else if (tiles[tileIndex] is ObstacleTile)
-        {
-            var boosterTile = (ObstacleTile)tiles[tileIndex];
-            tileTypeName = boosterTile.type.ToString();
-        }
 
         if (tileTextures.ContainsKey(tileTypeName))
         {
@@ -732,42 +727,6 @@ public class LevelEditorTab : EditorTab
                         {
                             var idx = i + (j * currentLevel.width);
                             tiles[idx] = new BoosterTile { type = currentBoosterType };
-                        }
-                    }
-                    break;
-            }
-        }
-        else if (currentBrushType == BrushType.OBSTACLE)
-        {
-            switch (currentBrushMode)
-            {
-                case BrushMode.Tile:
-                    tiles[tileIndex] = new ObstacleTile { type = currentObstacleType };
-                    break;
-
-                case BrushMode.Row:
-                    for (var i = 0; i < currentLevel.width; i++)
-                    {
-                        var idx = i + (y * currentLevel.width);
-                        tiles[idx] = new ObstacleTile { type = currentObstacleType };
-                    }
-                    break;
-
-                case BrushMode.Column:
-                    for (var j = 0; j < currentLevel.length; j++)
-                    {
-                        var idx = x + (j * currentLevel.width);
-                        tiles[idx] = new ObstacleTile { type = currentObstacleType };
-                    }
-                    break;
-
-                case BrushMode.Fill:
-                    for (var j = 0; j < currentLevel.length; j++)
-                    {
-                        for (var i = 0; i < currentLevel.width; i++)
-                        {
-                            var idx = i + (j * currentLevel.width);
-                            tiles[idx] = new ObstacleTile { type = currentObstacleType };
                         }
                     }
                     break;
