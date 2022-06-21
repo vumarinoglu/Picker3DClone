@@ -8,11 +8,15 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance { get; private set; }
 
-    [SerializeField]
     private Level level;
 
     [SerializeField]
+    private int builtLevelAmount;
+
+    [SerializeField]
     private int levelID;
+
+    public int realID;
 
     [SerializeField]
     private GameObject levelPrefab;
@@ -20,12 +24,14 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private float levelLength = 95f;
 
-    private Transform prevLevel;
-
     [SerializeField]
     private List<GameObject> collectiblePrefabs;
 
-    private Dictionary<CollectibleType, GameObject> dict = new Dictionary<CollectibleType, GameObject>();
+    [SerializeField]
+    private List<GameObject> activeLevels = new List<GameObject>();
+
+    private Transform currentLevel;
+    private GamePools gamePools;
 
     public static Action OnLevelSpawned;
     public static Action<int> OnChapterSpawned;
@@ -36,20 +42,30 @@ public class SpawnManager : MonoBehaviour
         Instance = this;
     }
 
+    private void OnEnable()
+    {
+        GameManager.OnEndLevel += NextLevel;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnEndLevel -= NextLevel;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        dict.Add(CollectibleType.S_SPHERE, collectiblePrefabs[0]);
-        dict.Add(CollectibleType.M_SPHERE, collectiblePrefabs[1]);
-        dict.Add(CollectibleType.L_SPHERE, collectiblePrefabs[2]);
-        dict.Add(CollectibleType.S_CUBE, collectiblePrefabs[3]);
-        dict.Add(CollectibleType.M_CUBE, collectiblePrefabs[4]);
-        dict.Add(CollectibleType.L_CUBE, collectiblePrefabs[5]);
-        dict.Add(CollectibleType.S_CAPSULE, collectiblePrefabs[6]);
-        dict.Add(CollectibleType.M_CAPSULE, collectiblePrefabs[7]);
-        dict.Add(CollectibleType.L_CAPSULE, collectiblePrefabs[8]);
+        gamePools = GameManager.Instance.gamePools;
+
+        levelID = PlayerPrefs.GetInt("currentLevel", 0);
+
+        if(levelID >= builtLevelAmount)
+        {
+            levelID = PlayerPrefs.GetInt("lastPlayedLevelID", UnityEngine.Random.Range(0, builtLevelAmount));
+        }
 
         CreateLevel(levelID);
+        CreateLevel(levelID+1);
     }
 
     public Level GetLevel() => level;
@@ -58,24 +74,35 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject levelObj;
 
+        if(levelID >= builtLevelAmount)
+        {
+            levelID = UnityEngine.Random.Range(0, builtLevelAmount);
+        }
+
         var serializer = new fsSerializer();
         level = FileUtils.LoadJsonFile<Level>(serializer, "Levels/" + levelID);
 
-        if (prevLevel == null)
+        if (currentLevel == null)
         {
-            levelObj = Instantiate(levelPrefab);
+            var startPos = new Vector3(0.0f, 0.0f, 10f);
+            levelObj = Instantiate(levelPrefab, startPos, levelPrefab.transform.rotation);
+            realID = level.id;
+            level.id = GameManager.Instance.currentLevel;
         }
         else
         {
-            levelObj = Instantiate(levelPrefab, prevLevel.position + new Vector3(0.0f, 0.0f, levelLength), levelPrefab.transform.rotation);
+            levelObj = Instantiate(levelPrefab, currentLevel.position + new Vector3(0.0f, 0.0f, levelLength), levelPrefab.transform.rotation);
+            realID = level.id-1;
+            level.id = GameManager.Instance.currentLevel + 1;
         }
 
-        prevLevel = levelObj.transform;
+        currentLevel = levelObj.transform;
+        activeLevels.Add(levelObj);
 
-        var levelParts = levelObj.GetComponent<LevelParts>();
+        var levelManager = levelObj.GetComponent<LevelManager>();
+        levelManager.level = level;
 
-        var roads = levelParts.chapters;
-
+        var roads = levelManager.roads;
 
         for (int h = 0; h < 3; h++)
         {
@@ -90,40 +117,19 @@ public class SpawnManager : MonoBehaviour
                     {
                         var tile = level.firstChapterTiles[tileIndex];
 
-                        var item = GetTileEntity(tile);
-
-                        if(item != null)
-                        {
-                            var obj = Instantiate(item);
-                            obj.transform.parent = roads[h].transform;
-                            obj.transform.localPosition = currentSpawnPoint;
-                        }
+                        var obj = GetTileEntity(tile, roads[h].transform, currentSpawnPoint, new Quaternion(0f,0f,0f,0f));
                     }
                     else if (h == 1)
                     {
                         var tile = level.secondChapterTiles[tileIndex];
 
-                        var item = GetTileEntity(tile);
-
-                        if (item != null)
-                        {
-                            var obj = Instantiate(item);
-                            obj.transform.parent = roads[h].transform;
-                            obj.transform.localPosition = currentSpawnPoint;
-                        }
+                        var obj = GetTileEntity(tile, roads[h].transform, currentSpawnPoint, new Quaternion(0f, 0f, 0f, 0f));
                     }
                     else if (h == 2)
                     {
                         var tile = level.finalChapterTiles[tileIndex];
 
-                        var item = GetTileEntity(tile);
-
-                        if (item != null)
-                        {
-                            var obj = Instantiate(item);
-                            obj.transform.parent = roads[h].transform;
-                            obj.transform.localPosition = currentSpawnPoint;
-                        }
+                        var obj = GetTileEntity(tile, roads[h].transform, currentSpawnPoint, new Quaternion(0f, 0f, 0f, 0f));
                     }
 
                     currentSpawnPoint.x += 1.0f;
@@ -137,7 +143,26 @@ public class SpawnManager : MonoBehaviour
         OnLevelSpawned?.Invoke();
     }
 
-    private GameObject GetTileEntity(LevelTile tile)
+    public void NextLevel()
+    {
+        if(level.id + 1 > builtLevelAmount)
+        {
+            var rand = UnityEngine.Random.Range(0, builtLevelAmount);
+            CreateLevel(rand);
+        }
+        else
+        {
+            CreateLevel(level.id + 1);
+        }
+
+        if(level.id - 2 >= 0 && activeLevels.Count > 3)
+        {
+            Destroy(activeLevels[0]);
+        }
+    }
+
+
+    private GameObject GetTileEntity(LevelTile tile, Transform parent, Vector3 position, Quaternion rotation)
     {
         if(tile != null)
         {
@@ -148,25 +173,39 @@ public class SpawnManager : MonoBehaviour
                 switch (item.type)
                 {
                     case CollectibleType.S_SPHERE:
-                        return dict[CollectibleType.S_SPHERE];
+                        return gamePools.smallSpherePool.GetObject(parent, position, rotation);
                     case CollectibleType.S_CUBE:
-                        return dict[CollectibleType.S_CUBE];
+                        return gamePools.smallCubePool.GetObject(parent, position, rotation);
                     case CollectibleType.S_CAPSULE:
-                        return dict[CollectibleType.S_CAPSULE];
+                        return gamePools.smallCapsulePool.GetObject(parent, position, rotation);
                     case CollectibleType.M_SPHERE:
-                        return dict[CollectibleType.M_SPHERE];
+                        return gamePools.mediumSpherePool.GetObject(parent, position, rotation);
                     case CollectibleType.M_CUBE:
-                        return dict[CollectibleType.M_CUBE];
+                        return gamePools.mediumCubePool.GetObject(parent, position, rotation);
                     case CollectibleType.M_CAPSULE:
-                        return dict[CollectibleType.M_CAPSULE];
+                        return gamePools.mediumCapsulePool.GetObject(parent, position, rotation);
                     case CollectibleType.L_SPHERE:
-                        return dict[CollectibleType.L_SPHERE];
+                        return gamePools.largeSpherePool.GetObject(parent, position, rotation);
                     case CollectibleType.L_CUBE:
-                        return dict[CollectibleType.L_CUBE];
+                        return gamePools.largeCubePool.GetObject(parent, position, rotation);
                     case CollectibleType.L_CAPSULE:
-                        return dict[CollectibleType.L_CAPSULE];
+                        return gamePools.largeCapsulePool.GetObject(parent, position, rotation);
                     default:
-                        return dict[CollectibleType.S_SPHERE];
+                        return gamePools.smallSpherePool.GetObject(parent, position, rotation);
+                }
+            }
+            else if (tile is BoosterTile)
+            {
+                var item = (BoosterTile)tile;
+
+                switch (item.type)
+                {
+                    case BoosterType.WINGS:
+                        return gamePools.wingsPool.GetObject(parent, position, rotation);
+                    case BoosterType.SIZEUP:
+                        break;
+                    default:
+                        break;
                 }
             }
         }
