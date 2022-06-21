@@ -22,11 +22,3 @@ public class BoosterTile : LevelTile
     public BoosterType type;
 }
 
-/// <summary>
-/// The class used for obstacle tiles.
-/// </summary>
-public class ObstacleTile : LevelTile
-{
-    public ObstacleType type;
-}
-
