@@ -7,12 +7,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    public GamePools gamePools;
+
     public static Action OnStartLevel;
     public static Action OnEndOfChapter;
-    public static Action OnChapterWon;
+    public static Action<int> OnChapterWon;
     public static Action OnChapterLost;
+    public static Action OnEndLevel;
+    public static Action OnNextLevel;
 
-    private int currentChapter;
+    public static Action OnGamePlayStarted;
+    public static Action OnGameOver;
+
+    public int currentLevel;
 
     private GameState currentState;
     public enum GameState
@@ -26,44 +33,55 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null) Destroy(gameObject);
         Instance = this;
+
+        currentLevel = PlayerPrefs.GetInt("currentLevel", 0);
     }
 
     private void OnEnable()
     {
-        OnChapterWon += NextChapter;
+        OnEndLevel += IncreaseLevel;
+        OnChapterLost += LevelLost;
     }
 
     private void OnDisable()
     {
-        OnChapterWon -= NextChapter;
+        OnEndLevel -= IncreaseLevel;
+        OnChapterLost -= LevelLost;
     }
 
     void Start()
     {
-        currentState = GameState.START;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ChangeGameState(GameState.START);
     }
 
     public GameState GetGameState() => currentState;
     public void ChangeGameState(GameState newState)
     {
         currentState = newState;
+
+        switch (currentState)
+        {
+            case GameState.START:
+                break;
+            case GameState.GAMEPLAY:
+                OnGamePlayStarted?.Invoke();
+                break;
+            case GameState.GAMEOVER:
+                OnGameOver?.Invoke();
+                break;
+            default:
+                break;
+        }
     }
 
-    public void NextChapter()
+    public void IncreaseLevel()
     {
-        if(currentChapter < 2)
-        {
-            currentChapter++;
-        }
-        else
-        {
-            currentChapter = 0;
-        }
+        currentLevel++;
+        PlayerPrefs.SetInt("currentLevel", currentLevel);
+    }
+
+    public void LevelLost()
+    {
+        ChangeGameState(GameState.GAMEOVER);
     }
 }
